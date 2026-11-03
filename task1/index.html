@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Selector Detective – Task 1</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <h1>Selector Detective</h1>
+    <p class="sub">Who took the birthday cake? Pick a case – every case is solved with one jQuery chain that searches the page.</p>
+  </header>
+
+  <section class="panel">
+    <div id="cases" class="cases"></div>
+  </section>
+
+  <section id="result" class="result">
+    <div class="result-line">Choose a case above.</div>
+    <pre class="result-code"></pre>
+  </section>
+
+  <main id="house" class="house"></main>
+
+  <footer class="legend">
+    <span><i class="dot red"></i><i class="dot blue"></i><i class="dot green"></i><i class="dot black"></i><i class="dot yellow"></i><i class="dot purple"></i> Clothing color</span>
+    <span>📱 Phone</span><span>👓 Glasses</span><span>👜 Bag</span><span>☕ Cup</span><span>🍰 Cake crumbs</span>
+    <span>🕒 Arrival time</span><span><i class="badge-demo">🎓</i> AITU student</span>
+  </footer>
+
+  <script src="jquery-3.7.1.min.js"></script>
+  <script src="party.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

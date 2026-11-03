@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The party in motion – Task 2</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <h1>The party in motion</h1>
+    <p class="sub">Pick a case to put the spotlight on the guests. Click a guest to open the card, move guests between rooms, sort a room by arrival time.</p>
+  </header>
+
+  <section class="panel">
+    <div id="cases" class="cases"></div>
+    <div class="tools">
+      <button type="button" id="clear-btn" class="tool-btn">Clear</button>
+      <button type="button" id="reset-btn" class="tool-btn">Reset party</button>
+      <span class="hint">Esc or a click outside closes the guest card.</span>
+    </div>
+  </section>
+
+  <section id="result" class="result">
+    <div class="result-line">Choose a case above.</div>
+    <pre class="result-code"></pre>
+  </section>
+
+  <main id="house" class="house"></main>
+
+  <footer class="legend">
+    <span><i class="dot red"></i><i class="dot blue"></i><i class="dot green"></i><i class="dot black"></i><i class="dot yellow"></i><i class="dot purple"></i> Clothing color</span>
+    <span>📱 Phone</span><span>👓 Glasses</span><span>👜 Bag</span><span>☕ Cup</span><span>🍰 Cake crumbs</span>
+    <span>🕒 Arrival time</span><span><i class="badge-demo">🎓</i> AITU student</span>
+  </footer>
+
+  <script src="jquery-3.7.1.min.js"></script>
+  <script src="party.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+{
+  "task1": [
+    {
+      "id": 1,
+      "title": "Who is in the hall?",
+      "chain": "$('#room-hall .guest')",
+      "result": "Case 1: Who is in the hall?  →  6 guests: Arman, Sophia, Dias, Bekzat, Aruzhan, Saule"
+    },
+    {
+      "id": 2,
+      "title": "Who is dressed in yellow or purple?",
+      "chain": "$('.guest.yellow, .guest.purple')",
+      "result": "Case 2: Who is dressed in yellow or purple?  →  6 guests: Arman, Sophia, Bekzat, Sergey, Natasha, Inkar"
+    },
+    {
+      "id": 3,
+      "title": "Which AITU students are upstairs?",
+      "chain": "$('.floor[data-floor=\"2\"] .guest.aitu')",
+      "result": "Case 3: Which AITU students are upstairs?  →  5 guests: Aigerim, Ivan, Sophia, Dias, Aruzhan"
+    },
+    {
+      "id": 4,
+      "title": "Who has glasses or a bag?",
+      "chain": "$('.guest.glasses, .guest.bag')",
+      "result": "Case 4: Who has glasses or a bag?  →  10 guests: Madina, Arman, Bekzat, Saule, Emma, Timur, Yerlan, Daniel, Zarina, Inkar"
+    },
+    {
+      "id": 5,
+      "title": "Who came with nothing at all?",
+      "chain": "$('.guest:not(.phone):not(.glasses):not(.bag):not(.cup):not(.crumbs)')",
+      "result": "Case 5: Who came with nothing at all?  →  3 guests: Dias, Sergey, Natasha"
+    },
+    {
+      "id": 6,
+      "title": "Who has a phone but no bag?",
+      "chain": "$('.guest.phone:not(.bag)')",
+      "result": "Case 6: Who has a phone but no bag?  →  6 guests: Aliya, Sophia, Aruzhan, Nurlan, Yerlan, Askar"
+    },
+    {
+      "id": 7,
+      "title": "Who arrived between 20:30 and 21:00, both included?",
+      "chain": "$('.guest').filter(function () {\n  const m = $(this).data('minutes');\n  return m >= 1230 && m <= 1260;\n  })",
+      "result": "Case 7: Who arrived between 20:30 and 21:00, both included?  →  6 guests: Aigerim, Arman, Bekzat, Sergey, Natasha, Askar"
+    },
+    {
+      "id": 8,
+      "title": "Who arrived after 21:00 and is not an AITU student?",
+      "chain": "$('.guest:not(.aitu)').filter(function () {\n  return $(this).data('minutes') > 1260;\n  })",
+      "result": "Case 8: Who arrived after 21:00 and is not an AITU student?  →  4 guests: Aliya, Madina, Saule, Zarina"
+    },
+    {
+      "id": 9,
+      "title": "Who stands right next to Askar?",
+      "chain": "$('.guest[data-name=\"Askar\"]').prev().add('.guest[data-name=\"Askar\"] + .guest')",
+      "result": "Case 9: Who stands right next to Askar?  →  2 guests: Natasha, Inkar"
+    },
+    {
+      "id": 10,
+      "title": "Who stands last in each room?",
+      "chain": "$('.room .guest:last-child')",
+      "result": "Case 10: Who stands last in each room?  →  4 guests: Ivan, Saule, Kamila, Inkar"
+    },
+    {
+      "id": 11,
+      "title": "Who stands third in each room?",
+      "chain": "$('.room .guest:nth-child(3)')",
+      "result": "Case 11: Who stands third in each room?  →  4 guests: Madina, Dias, Timur, Natasha"
+    },
+    {
+      "id": 12,
+      "title": "Who stands after Timur in his room?",
+      "chain": "$('.guest[data-name=\"Timur\"]').nextAll()",
+      "result": "Case 12: Who stands after Timur in his room?  →  3 guests: Sergey, Yerlan, Kamila"
+    },
+    {
+      "id": 13,
+      "title": "Who stands right before someone in black?",
+      "chain": "$('.guest.black').prev()",
+      "result": "Case 13: Who stands right before someone in black?  →  4 guests: Aigerim, Madina, Nurlan, Natasha"
+    },
+    {
+      "id": 14,
+      "title": "In which room is Aruzhan?",
+      "chain": "$('.guest[data-name=\"Aruzhan\"]').closest('.room')",
+      "result": "Case 14: In which room is Aruzhan?  →  1 room: Hall"
+    },
+    {
+      "id": 15,
+      "title": "Which rooms have fewer than 6 guests?",
+      "chain": "$('.room:not(:has(.guest:nth-child(6)))')",
+      "result": "Case 15: Which rooms have fewer than 6 guests?  →  2 rooms: Balcony, Living room"
+    },
+    {
+      "id": 16,
+      "title": "In which rooms does somebody have a cup, but nobody wears glasses?",
+      "chain": "$('.room:has(.guest.cup):not(:has(.guest.glasses))')",
+      "result": "Case 16: In which rooms does somebody have a cup, but nobody wears glasses?  →  1 room: Balcony"
+    },
+    {
+      "id": 17,
+      "title": "Who came first to each room?",
+      "chain": "$('.room').map(function () {\n  return $(this).find('.guest').get().sort((a, b) => $(a).data('minutes') - $(b).data('minutes'))[0];\n  })",
+      "result": "Case 17: Who came first to each room?  →  4 guests: Ivan, Dias, Nurlan, Daniel"
+    },
+    {
+      "id": 18,
+      "title": "Miras (AITU, blue, 21:20, phone) comes and stands between Askar and Inkar.",
+      "chain": "makeGuestCard(MIRAS).hide().insertAfter('.guest[data-name=\"Askar\"]').fadeIn(700)",
+      "result": "Case 18: Miras (AITU, blue, 21:20, phone) comes and stands between Askar and Inkar.  →  1 new guest: Miras"
+    },
+    {
+      "id": 19,
+      "title": "Natasha says goodbye: her card fades away and is removed.",
+      "chain": "$('.guest[data-name=\"Natasha\"]').fadeOut(700, function () { $(this).remove(); })",
+      "result": "Case 19: Natasha says goodbye: her card fades away and is removed.  →  1 guest: Natasha (removed from the page)"
+    },
+    {
+      "id": 20,
+      "title": "Who took the cake?",
+      "chain": "$('.floor[data-floor=\"1\"] .guest.crumbs:not(.cup)')\n  .filter(function () { const m = $(this).data('minutes'); return m > 1260 && m < 1290; })\n  .filter(function () { return $(this).prev().add($(this).next()).filter('.aitu').length > 0; })",
+      "result": "Case 20: Who took the cake?  →  1 guest: Zarina"
+    }
+  ],
+  "task2": {}
+}
